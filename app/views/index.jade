@@ -13,5 +13,21 @@ html
 
 	body
 		.container
-			.gianttitle Awesome Expert Extractor
+			#title
+				h1 Expert Extractor
+			#identify
+				.input-group.input-group-lg
+					span.input-group-addon @
+					input.form-control(type="text", placeholder="twitterhandle")
+					span.input-group-btn
+						button.btn.btn-large(type="button")
+							span GO!
 
+			#search
+				.input-group.input-group-lg
+					span.input-group-addon #
+					input.form-control(type="text", placeholder="Topic")
+					span.input-group-btn
+						button.btn.btn-large(type="button")
+							span.glyphicon.glyphicon-search
+							span search
