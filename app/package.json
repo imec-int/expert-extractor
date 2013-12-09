@@ -8,6 +8,7 @@
     "express": "3.0.0rc4",
     "stylus": "*",
     "jade": "~0.28.1",
-    "twitter-bootstrap-3.0.0": "~3.0.0"
+    "twitter-bootstrap-3.0.0": "~3.0.0",
+    "oauth": "~0.9.10"
   }
 }
