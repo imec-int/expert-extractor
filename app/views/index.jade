@@ -3,10 +3,9 @@ html
 	head
 		meta(name='viewport', content='initial-scale=1.0, user-scalable=no')
 		title= title
-
-		link(rel='stylesheet', href="/stylesheets/style.css")
 		link(rel='stylesheet', href='/dist/css/bootstrap.min.css')
 		link(rel='stylesheet', href='/dist/css/bootstrap-theme.min.css')
+		link(rel='stylesheet', href="/stylesheets/style.css")
 		script(type='text/javascript', src='/dist/js/bootstrap.min.js')
 		script(type='text/javascript', src='//code.jquery.com/jquery.min.js')
 		script(type='text/javascript', src='/javascripts/index.js')
@@ -39,3 +38,52 @@ html
 							span.glyphicon.glyphicon-search
 							span search
 
+			#topexpertlist.jumbotron
+				h1 Top Experts (out of your league) for #currenttopic
+				.lead click badges to see expertise ans links
+				.row
+					.col-md-4
+						.panel.panel-primary
+							.panel-heading
+								h3.panel-title
+									@kaosbeat  .
+									.badge.text-right 42
+							.panel-body.center
+								img(src="images/Kasper.png")
+								ul.list-group
+									li.list-group-item hacking
+									li.list-group-item beer
+									li.list-group-item media
+							.panel-footer
+								button.btn.btn-success include
+								button.btn.btn-danger exclude
+					.col-md-4
+						.panel.panel-primary
+							.panel-heading
+								h3.panel-title
+									@DecrockSam  .
+									.badge.text-right 42
+							.panel-body.center
+								img(src="images/Sam.png")
+								ul.list-group
+									li.list-group-item hacking
+									li.list-group-item beer
+									li.list-group-item media
+							.panel-footer
+								button.btn.btn-success include
+								button.btn.btn-danger exclude
+					.col-md-4
+						.panel.panel-primary
+							.panel-heading
+								h3.panel-title
+									@m4ttzndrtwitt3r  .
+									.badge.text-right 42
+							.panel-body.center
+								img(src="images/Matthias.png")
+								ul.list-group
+									li.list-group-item hacking
+									li.list-group-item beer
+									li.list-group-item media
+							.panel-footer
+								button.btn.btn-success include
+								button.btn.btn-danger exclude
