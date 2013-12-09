@@ -11,6 +11,8 @@
     "twitter-bootstrap-3.0.0": "~3.0.0",
     "oauth": "~0.9.10",
     "passport-twitter": "~1.0.2",
-    "passport": "~0.1.17"
+    "passport": "~0.1.17",
+    "underscore": "~1.5.2",
+    "async": "~0.2.9"
   }
 }
