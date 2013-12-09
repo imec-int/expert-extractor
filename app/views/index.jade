@@ -38,26 +38,28 @@ html
 							span.glyphicon.glyphicon-search
 							span search
 
-			#topexpertlist.jumbotron
-				h1 Top Experts (out of your league) for #currenttopic
+			#topexpertlist
+				h2 Top Experts (out of your league) for #currenttopic
 				.lead click badges to see expertise ans links
-				.row
-					.col-md-4
-						.panel.panel-primary
-							.panel-heading
-								h3.panel-title
-									@kaosbeat  .
-									.badge.text-right 42
-							.panel-body.center
-								img(src="images/Kasper.png")
-								ul.list-group
-									li.list-group-item hacking
-									li.list-group-item beer
-									li.list-group-item media
-							.panel-footer
-								button.btn.btn-success include
-								button.btn.btn-danger exclude
-					.col-md-4
+				.row.container
+					.col-md-4.first
+						.profilepanel
+							.panel.panel-primary
+								.panel-heading
+									h3.panel-title
+										@kaosbeat  .
+										.badge.text-right 42
+								.panel-body.center
+									img(src="images/Kasper.png")
+									ul.list-group
+										li.list-group-item hacking
+										li.list-group-item beer
+										li.list-group-item media
+								.panel-footer
+									button.btn.btn-success include
+									button.btn.btn-danger exclude
+									button.btn(onclick="moreinfo('first')") more info
+					.profilepanel.col-md-4.second
 						.panel.panel-primary
 							.panel-heading
 								h3.panel-title
@@ -72,7 +74,8 @@ html
 							.panel-footer
 								button.btn.btn-success include
 								button.btn.btn-danger exclude
-					.col-md-4
+								button.btn(onclick="moreinfo('second')") more info
+					.profilepanel.col-md-4.third
 						.panel.panel-primary
 							.panel-heading
 								h3.panel-title
@@ -87,3 +90,14 @@ html
 							.panel-footer
 								button.btn.btn-success include
 								button.btn.btn-danger exclude
+								button.btn(onclick="moreinfo('third')") more info
+
+
+			#moreinfo.col-md-8
+				.panel.panel-primary
+					.row
+					.panel-heading
+						h3 more info
+					.panel-body
+					.panel-footer
+
