@@ -43,36 +43,17 @@ html
 
 						p
 						.topicpercentage
-							span percentage of tweets aboutprimary
+							span topics the user tweets about
 							ul.list-group.topics
 								{{each topics}}
 								li.list-group-item
 									span.label.label-success ${topic}
 								{{/each}}
 
-							.progress
-								.progress-bar.progress-bar-success(style='width: 35%;')
-									span.sr-only 35% Complete (success)
-								.progress-bar.progress-bar-warning(style='width: 20%;')
-									span.sr-only 20% Complete (warning)
-								.progress-bar.progress-bar-danger(style='width: 10%;')
-									span.sr-only 10% Complete (danger)
-								.progress-bar.progress-bar-primary(style='width: 35%;')
-									span.sr-only 35% Complete (danger)
-						.conversation
-							.badge 23
-							p
-							span  users engaged in conversation about
-							span.label.label-success #currenttopic
-
-						.externalcontent
-							span  A total of
-							.badge 42
-							span  links were cited
 					.panel-footer
-						button.btn.btn-success include
-						button.btn.btn-danger exclude
-						button.btn(onclick="moreinfo('first')") more info
+						button.btn.btn-success.goodexpert Mark as good expert
+						button.btn.btn-danger.badexpert(data-userid="${id}") Mark as bad expert
+
 
 	body
 		.container

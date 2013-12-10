@@ -81,6 +81,12 @@ var App = function (options){
 		return datestring;
 	};
 
+	var onMarkasbadexpert = function(event){
+		console.log(event);
+		var userid = $(event.target).attr('data-userid');
+		console.log(userid);
+	};
+
 
 	return {
 		init: init
