@@ -8,8 +8,65 @@ html
 		link(rel='stylesheet', href="/stylesheets/style.css")
 
 		script(type='text/javascript', src='//code.jquery.com/jquery.min.js')
+		script(type='text/javascript', src='/dist/jquery.tmpl.min.js')
 		script(type='text/javascript', src='/dist/js/bootstrap.min.js')
 		script(type='text/javascript', src='/javascripts/index.js')
+
+
+		script#expert-tmpl(type="text/x-jquery-tmpl")
+			.profilepanel.col-md-4.first
+				.panel.panel-primary
+					.panel-heading
+						h3.panel-title
+							@${screen_name}  .
+							.badge.text-right 42
+					.panel-body.center
+						img(src="${profile_image_url}")
+						ul.list-group
+							li.list-group-item ${description}
+							li.list-group-item ${location}
+						.topicfrequency
+							.badge 42
+							span  tweets on
+							span.label.label-success ${topic}
+							span  since
+							.btn-group
+								button.btn.btn-default.btn-xs.dropdown-toggle(type="button", data-toggle="dropdown") last week
+									span.caret
+									ul.dropdown-menu
+										li last month
+										li last 24h
+						p
+						.topicpercentage
+							span percentage of tweets about
+							span.label.label-success ${topic}
+							span.label.label-warning #othertopic
+							span.label.label-danger #yetanothertopic
+							p
+							.progress
+								.progress-bar.progress-bar-success(style='width: 35%;')
+									span.sr-only 35% Complete (success)
+								.progress-bar.progress-bar-warning(style='width: 20%;')
+									span.sr-only 20% Complete (warning)
+								.progress-bar.progress-bar-danger(style='width: 10%;')
+									span.sr-only 10% Complete (danger)
+						.conversation
+							.badge 35
+							span  times retweeted about
+							span.label.label-success #currenttopic
+							.badge 23
+							p
+							span  users engaged in conversation about
+							span.label.label-success #currenttopic
+
+						.externalcontent
+							span  A total of
+							.badge 42
+							span  links were cited
+					.panel-footer
+						button.btn.btn-success include
+						button.btn.btn-danger exclude
+						button.btn(onclick="moreinfo('first')") more info
 
 	body
 		.container
@@ -28,127 +85,10 @@ html
 							span search
 
 			#topexpertlist
-				h2 Top Experts (out of your league) for #currenttopic
+				h2 Top Experts (out of your league) for&nbsp;
+					span#topic
 				.lead click badges to see expertise ans links
 				.row.container
-					.profilepanel.col-md-4.first
-						.panel.panel-primary
-							.panel-heading
-								h3.panel-title
-									@kaosbeat  .
-									.badge.text-right 42
-							.panel-body.center
-								img(src="images/Kasper.png")
-								ul.list-group
-									li.list-group-item hacking
-									li.list-group-item beer
-									li.list-group-item media
-								.topicfrequency
-									.badge 42
-									span  tweets on
-									span.label.label-success  #currenttopic
-									span  since
-									.btn-group
-										button.btn.btn-default.btn-xs.dropdown-toggle(type="button", data-toggle="dropdown") last week
-											span.caret
-											ul.dropdown-menu
-												li last month
-												li last 24h
-								p
-								.topicpercentage
-									span percentage of tweets about
-									span.label.label-success #currenttopic
-									span.label.label-warning #othertopic
-									span.label.label-danger #yetanothertopic
-									p
-									.progress
-										.progress-bar.progress-bar-success(style='width: 35%;')
-											span.sr-only 35% Complete (success)
-										.progress-bar.progress-bar-warning(style='width: 20%;')
-											span.sr-only 20% Complete (warning)
-										.progress-bar.progress-bar-danger(style='width: 10%;')
-											span.sr-only 10% Complete (danger)
-								.conversation
-									.badge 35
-									span  times retweeted about
-									span.label.label-success #currenttopic
-									.badge 23
-									p
-									span  users engaged in conversation about
-									span.label.label-success #currenttopic
 
-								.externalcontent
-									span  A total of
-									.badge 42
-									span  links were cited
-							.panel-footer
-								button.btn.btn-success include
-								button.btn.btn-danger exclude
-								button.btn(onclick="moreinfo('first')") more info
 
-					.profilepanel.col-md-4.second
-						.panel.panel-primary
-							.panel-heading
-								h3.panel-title
-									@DecrockSam  .
-									.badge.text-right 42
-							.panel-body.center
-								img(src="images/Sam.png")
-								ul.list-group
-									li.list-group-item hacking
-									li.list-group-item beer
-									li.list-group-item media
-							.panel-footer
-								button.btn.btn-success include
-								button.btn.btn-danger exclude
-								button.btn(onclick="moreinfo('second')") more info
-					.profilepanel.col-md-4.third
-						.panel.panel-primary
-							.panel-heading
-								h3.panel-title
-									@m4ttzndrtwitt3r  .
-									.badge.text-right 42
-							.panel-body.center
-								img(src="images/Matthias.png")
-								ul.list-group
-									li.list-group-item hacking
-									li.list-group-item beer
-									li.list-group-item media
-							.panel-footer
-								button.btn.btn-success include
-								button.btn.btn-danger exclude
-								button.btn(onclick="moreinfo('third')") more info
-
-						.profilepanel.col-md-4.second
-						.panel.panel-primary
-							.panel-heading
-								h3.panel-title
-									@DecrockSam  .
-									.badge.text-right 42
-							.panel-body.center
-								img(src="images/Sam.png")
-								ul.list-group
-									li.list-group-item hacking
-									li.list-group-item beer
-									li.list-group-item media
-							.panel-footer
-								button.btn.btn-success include
-								button.btn.btn-danger exclude
-								button.btn(onclick="moreinfo('second')") more info
-					.profilepanel.col-md-4.third
-						.panel.panel-primary
-							.panel-heading
-								h3.panel-title
-									@m4ttzndrtwitt3r  .
-									.badge.text-right 42
-							.panel-body.center
-								img(src="images/Matthias.png")
-								ul.list-group
-									li.list-group-item hacking
-									li.list-group-item beer
-									li.list-group-item media
-							.panel-footer
-								button.btn.btn-success include
-								button.btn.btn-danger exclude
-								button.btn(onclick="moreinfo('third')") more info
 

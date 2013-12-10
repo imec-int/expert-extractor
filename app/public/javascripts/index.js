@@ -1,34 +1,70 @@
-App = {
-	pageloaded: function() {
-		console.log("page loaded");
-		// $('#moreinfo').hide();
+var App = function (options){
 
+	var expertContainer = $("#topexpertlist>.row");
 
-		$("#searchbtn").click(function (event){
-			var topic = $("#topicfield").val();
-			console.log("searchbtn clicked and searching for " + topic);
+	var init = function (){
 
-			$.get('/api/searchtopic', {topic: topic}, function (data){
-				if(data.err) return console.log(data.err);
-				var experts = data;
-
-				console.log(experts); //hiermee de pagina populeren
-			});
+		// handlers:
+		$("#searchbtn").click(onSeachExperts);
+		$("#topicfield").keypress(function (event) {
+			if(event.which == 13) return onSeachExperts(); //ON ENTER
 		});
-	}
 
+	};
+
+	var onSeachExperts = function(){
+		var topic = $("#topicfield").val();
+		console.log("searchbtn clicked and searching for " + topic);
+
+		$.get('/api/searchtopic', {topic: topic}, function (data){
+			if(data.err) return console.log(data.err);
+			var experts = data;
+
+			// debug:
+			console.log(experts);
+
+			// populate html:
+			clearExperts();
+			for (var i = 0; i < experts.length; i++) {
+				addExpert( experts[i], topic );
+			};
+		});
+	};
+
+	var setTopic = function(topic){
+		$("#topic").html(topic);
+	};
+
+	var clearExperts = function(){
+		expertContainer.empty();
+	};
+
+	var addExpert = function(expert, topic){
+		expert.topic = topic;
+		var html = $("#expert-tmpl").tmpl(expert);
+		expertContainer.append(html);
+	};
+
+	var moreinfo = function(panel) {
+		var hgt = $('.'+panel).height();
+		console.log(hgt);
+		$('#moreinfo').height(hgt);
+		$("#topexpertlist .profilepanel:not('."+panel+"')").hide();
+		$( "#moreinfo" ).appendTo( "#topexpertlist > row" );
+		$('.'+panel).removeClass('')
+	};
+
+	return {
+		init: init
+	};
 };
 
 
-$(App.pageloaded);
+$(function(){
+	var app = new App({});
+	app.init();
+});
 
 
-function moreinfo(panel) {
 
-	var hgt = $('.'+panel).height();
-	console.log(hgt);
-	$('#moreinfo').height(hgt);
-	$("#topexpertlist .profilepanel:not('."+panel+"')").hide();
-	$( "#moreinfo" ).appendTo( "#topexpertlist > row" );
-	$('.'+panel).removeClass('')
-}
+
