@@ -21,7 +21,7 @@ html
 							@${screen_name}  .
 							.badge.text-right 42
 					.panel-body.center
-						img(src="${profile_image_url}")
+						.profileimage(style="background-image: url('${profile_image_url}')")
 						ul.list-group
 							li.list-group-item ${description}
 							li.list-group-item ${location}

@@ -41,6 +41,7 @@ var App = function (options){
 
 	var addExpert = function(expert, topic){
 		expert.topic = topic;
+		expert.profile_image_url = expert.profile_image_url.replace(/_normal/, '');
 		var html = $("#expert-tmpl").tmpl(expert);
 		expertContainer.append(html);
 	};
