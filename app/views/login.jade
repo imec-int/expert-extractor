@@ -3,13 +3,23 @@ html
 	head
 		meta(name='viewport', content='initial-scale=1.0, user-scalable=no')
 		title= title
-
 		link(rel='stylesheet', href='/dist/css/bootstrap.min.css')
 		link(rel='stylesheet', href='/dist/css/bootstrap-theme.min.css')
-		script(type='text/javascript', src='/dist/js/bootstrap.min.js')
-		script(type='text/javascript', src='//code.jquery.com/jquery.min.js')
+		link(rel='stylesheet', href="/stylesheets/style.css")
 
+		script(type='text/javascript', src='//code.jquery.com/jquery.min.js')
+		script(type='text/javascript', src='/dist/js/bootstrap.min.js')
+		script(type='text/javascript', src='/javascripts/index.js')
 
 	body
 		.container
-			a(href="/auth/twitter", style="margin-top: 20px").btn.btn-primary Login with Twitter
+			#title
+				h1 Expert Extractor
+			#identify.jumbotron
+				h1 Expert Extractor
+				.lead quickly find relevant experts for your topic and contact them. To get started login below!
+				.inputform.row
+					.input-group.input-group-lg.col-md-4
+						span.input-group-btn
+							a(href="/auth/twitter").btn.btn-large.btn-success
+								span Login with Twitter

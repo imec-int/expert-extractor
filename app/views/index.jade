@@ -6,35 +6,24 @@ html
 		link(rel='stylesheet', href='/dist/css/bootstrap.min.css')
 		link(rel='stylesheet', href='/dist/css/bootstrap-theme.min.css')
 		link(rel='stylesheet', href="/stylesheets/style.css")
-		script(type='text/javascript', src='/dist/js/bootstrap.min.js')
+
 		script(type='text/javascript', src='//code.jquery.com/jquery.min.js')
+		script(type='text/javascript', src='/dist/js/bootstrap.min.js')
 		script(type='text/javascript', src='/javascripts/index.js')
 
 	body
 		.container
 			#title
 				h1 Expert Extractor
-			#identify.jumbotron
-				h1 Expert Extractor
-				.lead quickly find relevant experts for your topic and contact them. To get started login below!
-				.inputform.row
-					.input-group.input-group-lg.col-md-4
-						span.input-group-addon @
-						input.form-control(type="text", placeholder="twitterhandle")
-						span.input-group-btn
-							button.btn.btn-large.btn-success(type="button")
-								span GO!
-
-
 
 			#search.jumbotron
 				h1 Find and refine topic
 				.lead type in your topic, and refine it further using tags
 				.input-group.input-group-lg
 					span.input-group-addon #
-					input.form-control(type="text", placeholder="Topic")
+					input#topicfield.form-control(type="text", placeholder="Topic")
 					span.input-group-btn
-						button.btn.btn-large(type="button")
+						button#searchbtn.btn.btn-large(type="button")
 							span.glyphicon.glyphicon-search
 							span search
 
@@ -42,23 +31,61 @@ html
 				h2 Top Experts (out of your league) for #currenttopic
 				.lead click badges to see expertise ans links
 				.row.container
-					.col-md-4.first
-						.profilepanel
-							.panel.panel-primary
-								.panel-heading
-									h3.panel-title
-										@kaosbeat  .
-										.badge.text-right 42
-								.panel-body.center
-									img(src="images/Kasper.png")
-									ul.list-group
-										li.list-group-item hacking
-										li.list-group-item beer
-										li.list-group-item media
-								.panel-footer
-									button.btn.btn-success include
-									button.btn.btn-danger exclude
-									button.btn(onclick="moreinfo('first')") more info
+					.profilepanel.col-md-4.first
+						.panel.panel-primary
+							.panel-heading
+								h3.panel-title
+									@kaosbeat  .
+									.badge.text-right 42
+							.panel-body.center
+								img(src="images/Kasper.png")
+								ul.list-group
+									li.list-group-item hacking
+									li.list-group-item beer
+									li.list-group-item media
+								.topicfrequency
+									.badge 42
+									span  tweets on
+									span.label.label-success  #currenttopic
+									span  since
+									.btn-group
+										button.btn.btn-default.btn-xs.dropdown-toggle(type="button", data-toggle="dropdown") last week
+											span.caret
+											ul.dropdown-menu
+												li last month
+												li last 24h
+								p
+								.topicpercentage
+									span percentage of tweets about
+									span.label.label-success #currenttopic
+									span.label.label-warning #othertopic
+									span.label.label-danger #yetanothertopic
+									p
+									.progress
+										.progress-bar.progress-bar-success(style='width: 35%;')
+											span.sr-only 35% Complete (success)
+										.progress-bar.progress-bar-warning(style='width: 20%;')
+											span.sr-only 20% Complete (warning)
+										.progress-bar.progress-bar-danger(style='width: 10%;')
+											span.sr-only 10% Complete (danger)
+								.conversation
+									.badge 35
+									span  times retweeted about
+									span.label.label-success #currenttopic
+									.badge 23
+									p
+									span  users engaged in conversation about
+									span.label.label-success #currenttopic
+
+								.externalcontent
+									span  A total of
+									.badge 42
+									span  links were cited
+							.panel-footer
+								button.btn.btn-success include
+								button.btn.btn-danger exclude
+								button.btn(onclick="moreinfo('first')") more info
+
 					.profilepanel.col-md-4.second
 						.panel.panel-primary
 							.panel-heading
@@ -92,12 +119,51 @@ html
 								button.btn.btn-danger exclude
 								button.btn(onclick="moreinfo('third')") more info
 
-
 			#moreinfo.col-md-8
 				.panel.panel-primary
 					.row
 					.panel-heading
 						h3 more info
 					.panel-body
+						.topicfrequency
+							.badge 42
+							span  tweets on
+							span.label.label-success  #currenttopic
+							span  since
+							.btn-group
+								button.btn.btn-default.btn-xs.dropdown-toggle(type="button", data-toggle="dropdown") last week
+									span.caret
+									ul.dropdown-menu
+										li last month
+										li last 24h
+						p
+						.topicpercentage
+							span percentage of tweets about
+							span.label.label-success #currenttopic
+							span.label.label-warning #othertopic
+							span.label.label-danger #yetanothertopic
+							p
+							.progress
+								.progress-bar.progress-bar-success(style='width: 35%;')
+									span.sr-only 35% Complete (success)
+								.progress-bar.progress-bar-warning(style='width: 20%;')
+									span.sr-only 20% Complete (warning)
+								.progress-bar.progress-bar-danger(style='width: 10%;')
+									span.sr-only 10% Complete (danger)
+						.conversation
+							.badge 35
+							span  times retweeted about
+							span.label.label-success #currenttopic
+							.badge 23
+							p
+							span  users engaged in conversation about
+							span.label.label-success #currenttopic
+
+						.externalcontent
+							span  A total of
+							.badge 42
+							span  links were cited
+
+
 					.panel-footer
 
