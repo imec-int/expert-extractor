@@ -13,6 +13,7 @@
     "passport-twitter": "~1.0.2",
     "passport": "~0.1.17",
     "underscore": "~1.5.2",
-    "async": "~0.2.9"
+    "async": "~0.2.9",
+    "httpreq": "~0.3.4"
   }
 }
