@@ -47,7 +47,7 @@ html
 							ul.list-group.topics
 								{{each topics}}
 								li.list-group-item
-									span.label.label-success ${topic}
+									span.label.label-success ${topic} (${occurrence})
 								{{/each}}
 
 					.panel-footer
@@ -72,7 +72,7 @@ html
 							span search
 
 			#topexpertlist
-				h2 Top Experts (out of your league) for&nbsp;
+				h2 Top Experts for&nbsp;
 					span#topic
 				.lead click badges to see expertise ans links
 				.row.container
