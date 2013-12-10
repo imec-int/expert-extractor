@@ -36,9 +36,9 @@ html
 							span.label.label-success ${topic}
 							span &nbsp;since ${earliestTweetDate}
 
-						.tweets
+						ul.tweets
 							{{each tweets}}
-							.tweettext ${text}
+							li.tweettext ${text}
 							{{/each}}
 
 						p
