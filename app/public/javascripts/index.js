@@ -42,6 +42,21 @@ var App = function (options){
 	var addExpert = function(expert, topic){
 		expert.topic = topic;
 		expert.profile_image_url = expert.profile_image_url.replace(/_normal/, '');
+
+		expert.earliestTweetDate = null;
+		for (var i = expert.tweets.length - 1; i >= 0; i--) {
+			if( !expert.earliestTweetDate || expert.tweets[i].created_at < expert.earliestTweetDate)
+				expert.earliestTweetDate = expert.tweets[i].created_at;
+		};
+		expert.earliestTweetDate = getDateString(expert.earliestTweetDate); //omzetten in iets leesbaars
+
+		expert.earliestRetweetedtweetDate = null;
+		for (var i = expert.retweetedtweets.length - 1; i >= 0; i--) {
+			if( !expert.earliestRetweetedtweetDate || expert.retweetedtweets[i].created_at < expert.earliestRetweetedtweetDate)
+				expert.earliestRetweetedtweetDate = expert.retweetedtweets[i].created_at;
+		};
+		expert.earliestRetweetedtweetDate = getDateString(expert.earliestRetweetedtweetDate); //omzetten in iets leesbaars
+
 		var html = $("#expert-tmpl").tmpl(expert);
 		expertContainer.append(html);
 	};
@@ -54,6 +69,17 @@ var App = function (options){
 		$( "#moreinfo" ).appendTo( "#topexpertlist > row" );
 		$('.'+panel).removeClass('')
 	};
+
+	var getDateString = function(epoch){
+		var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+
+		var date = new Date(epoch);
+
+		var datestring = date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
+
+		return datestring;
+	};
+
 
 	return {
 		init: init

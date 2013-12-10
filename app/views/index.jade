@@ -19,23 +19,28 @@ html
 					.panel-heading
 						h3.panel-title
 							@${screen_name}  .
-							.badge.text-right 42
+							.badge.text-right ${tweets.length}
 					.panel-body.center
 						.profileimage(style="background-image: url('${profile_image_url}')")
 						ul.list-group
 							li.list-group-item.description ${description}
 							li.list-group-item.location ${location}
 						.topicfrequency
-							.badge 42
-							span  tweets on
+							.badge ${retweetedtweets.length}
+							span &nbsp;retweeted tweets on&nbsp;
 							span.label.label-success ${topic}
-							span  since
-							.btn-group
-								button.btn.btn-default.btn-xs.dropdown-toggle(type="button", data-toggle="dropdown") last week
-									span.caret
-									ul.dropdown-menu
-										li last month
-										li last 24h
+							span &nbsp;since ${earliestRetweetedtweetDate}
+						.topicfrequency
+							.badge ${tweets.length}
+							span &nbsp;tweets on&nbsp;
+							span.label.label-success ${topic}
+							span &nbsp;since ${earliestTweetDate}
+
+						.tweets
+							{{each tweets}}
+							.tweettext ${text}
+							{{/each}}
+
 						p
 						.topicpercentage
 							span percentage of tweets about
