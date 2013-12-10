@@ -26,7 +26,7 @@ function parseUrl(url, callback){
 					date = dateParser2( item.date );
 
 				if(!date){
-					console.log( "Diffbot: problem parsing date: " + item.date );
+					// console.log( "Diffbot: problem parsing date: " + item.date );
 					date = (new Date()).getTime(); // huidige tijd er in steken
 				}
 
@@ -35,6 +35,7 @@ function parseUrl(url, callback){
 				item.date = (new Date()).getTime(); // huidige tijd er in steken
 			}
 
+			if(item.text) delete item.text;
 			//set source:
 			if(!item.source){
 				var match = url.match(/http(s)?:\/\/(www.)?(.+?)\//);

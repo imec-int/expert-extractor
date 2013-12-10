@@ -5,6 +5,8 @@ var OAuth = require('oauth').OAuth;
 var querystring = require('querystring');
 var _ = require('underscore');
 var config = require('./config')
+var async = require('async');
+var diffbot = require('./diffbot');
 
 var twitterOAuth = new OAuth(
 	'https://api.twitter.com/oauth/request_token',
@@ -60,6 +62,52 @@ TwitterUser.prototype.searchTopicFromUser = function(topic, username, callback){
 		callback(null, filteredTweets);
 	});
 };
+
+
+TwitterUser.prototype.getRetweetedArticlesAboutTopic = function(topic, callback){
+	var parameters = querystring.stringify({
+		q: topic,
+		result_type: 'mixed',
+		count: 200,
+		include_entities: true
+	});
+
+	twitterOAuth.getProtectedResource('https://api.twitter.com/1.1/search/tweets.json?' + parameters, "GET", this.token, this.tokenSecret, function (err, data, res){
+		if(err) return callback(err);
+		data = JSON.parse(data);
+		var tweets = data.statuses;
+
+		var urlObjects = [];
+		var articles = [];
+
+		for (var i = 0; i < tweets.length; i++) {
+			var tweet = tweets[i];
+
+			if(tweet.retweeted_status){
+				if(tweet.entities && tweet.entities.urls && tweet.entities.urls.length){
+					var urls = tweet.entities.urls;
+					for (var j = urls.length - 1; j >= 0; j--) {
+						if(urls[j].expanded_url) urlObjects.push({url: urls[j].expanded_url, retweet_count: tweet.retweet_count});
+					};
+				}
+
+			}
+		};
+		urlObjects = _.sortBy(urlObjects, function(urlObject){return - parseInt(urlObject.retweet_count, 10)});
+		// console.log(urlObjects);
+		async.eachSeries(urlObjects, function(urlObject, asyncDone){
+			diffbot.parseUrl(urlObject.url, function(err, item){
+				if(err) return asyncDone(err);
+				if(item.author && item.tags) articles.push(item);
+				return asyncDone();
+			});
+		}, function(err){
+			console.log(err);
+			console.log(articles);
+			return callback(err, articles);
+		});
+	});
+}
 
 TwitterUser.prototype.getUsersWhosTweetsAreRetweetedUsingTopic = function(topic, callback){
 	var parameters = querystring.stringify({
