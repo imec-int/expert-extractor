@@ -24,6 +24,7 @@ var App = function (options){
 			console.log(experts);
 
 			// populate html:
+			setTopic(topic);
 			clearExperts();
 			for (var i = 0; i < experts.length; i++) {
 				addExpert( experts[i], topic );
