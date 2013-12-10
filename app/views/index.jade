@@ -44,27 +44,11 @@ html
 						p
 						.topicpercentage
 							span percentage of tweets aboutprimary
-							ul.list-group
+							ul.list-group.topics
+								{{each topics}}
 								li.list-group-item
 									span.label.label-success ${topic}
-								li.list-group-item
-									span.label.label-warning #othertopic
-								li.list-group-item
-									span.label.label-danger #yetanothertopic
-								li.list-group-item
-									span.label.label-primary #yetanothertopic
-								li.list-group-item
-									span.label.label-primary #yetanothertopic
-								li.list-group-item
-									span.label.label-primary #yetanothertopic
-								li.list-group-item
-									span.label.label-primary #yetanothertopic
-								li.list-group-item
-									span.label.label-primary #yetanothertopic
-								li.list-group-item
-									span.label.label-primary #yetanothertopic
-								li.list-group-item
-									span.label.label-primary #yetanothertopic
+								{{/each}}
 
 							.progress
 								.progress-bar.progress-bar-success(style='width: 35%;')
