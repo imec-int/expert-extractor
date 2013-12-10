@@ -18,8 +18,8 @@ html
 				.panel.panel-primary
 					.panel-heading
 						h3.panel-title
-							@${screen_name}  .
-							.badge.text-right ${tweets.length}
+							@${screen_name}
+							.badge.text-right    ${tweets.length}
 					.panel-body.center
 						.profileimage(style="background-image: url('${profile_image_url}')")
 						ul.list-group
@@ -43,11 +43,29 @@ html
 
 						p
 						.topicpercentage
-							span percentage of tweets about
-							span.label.label-success ${topic}
-							span.label.label-warning #othertopic
-							span.label.label-danger #yetanothertopic
-							p
+							span percentage of tweets aboutprimary
+							ul.list-group
+								li.list-group-item
+									span.label.label-success ${topic}
+								li.list-group-item
+									span.label.label-warning #othertopic
+								li.list-group-item
+									span.label.label-danger #yetanothertopic
+								li.list-group-item
+									span.label.label-primary #yetanothertopic
+								li.list-group-item
+									span.label.label-primary #yetanothertopic
+								li.list-group-item
+									span.label.label-primary #yetanothertopic
+								li.list-group-item
+									span.label.label-primary #yetanothertopic
+								li.list-group-item
+									span.label.label-primary #yetanothertopic
+								li.list-group-item
+									span.label.label-primary #yetanothertopic
+								li.list-group-item
+									span.label.label-primary #yetanothertopic
+
 							.progress
 								.progress-bar.progress-bar-success(style='width: 35%;')
 									span.sr-only 35% Complete (success)
@@ -55,6 +73,8 @@ html
 									span.sr-only 20% Complete (warning)
 								.progress-bar.progress-bar-danger(style='width: 10%;')
 									span.sr-only 10% Complete (danger)
+								.progress-bar.progress-bar-primary(style='width: 35%;')
+									span.sr-only 35% Complete (danger)
 						.conversation
 							.badge 35
 							span  times retweeted about
