@@ -17,7 +17,11 @@ var App = function (options){
 		console.log("searchbtn clicked and searching for " + topic);
 
 		$.get('/api/searchtopic', {topic: topic}, function (data){
-			if(data.err) return console.log(data.err);
+			if(data.err){
+				console.log(data.err)
+				alert(data.err)
+				return;
+			}
 			var experts = data;
 
 			// debug:
