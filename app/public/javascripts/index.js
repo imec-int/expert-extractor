@@ -1,6 +1,7 @@
 var App = function (options){
 
 	var expertContainer = $("#topexpertlist>.row");
+	var spinnerEl = $(".spinner");
 
 	var init = function (){
 
@@ -10,16 +11,20 @@ var App = function (options){
 			if(event.which == 13) return onSeachExperts(); //ON ENTER
 		});
 
+		hideSpinner();
+
 	};
 
 	var onSeachExperts = function(){
 		var topic = $("#topicfield").val();
 		console.log("searchbtn clicked and searching for " + topic);
 
+		clearExperts();
+		showSpinner();
 		$.get('/api/searchtopic', {topic: topic}, function (data){
 			if(data.err){
-				console.log(data.err)
-				alert(data.err)
+				console.log(data.err);
+				alert(data.err);
 				return;
 			}
 			var experts = data;
@@ -28,8 +33,9 @@ var App = function (options){
 			console.log(experts);
 
 			// populate html:
-			setTopic(topic);
+			hideSpinner();
 			clearExperts();
+			setTopic(topic);
 			for (var i = 0; i < experts.length; i++) {
 				addExpert( experts[i], topic );
 			};
@@ -89,6 +95,14 @@ var App = function (options){
 		console.log(event);
 		var userid = $(event.target).attr('data-userid');
 		console.log(userid);
+	};
+
+	var showSpinner = function(){
+		spinnerEl.show();
+	};
+
+	var hideSpinner = function(){
+		spinnerEl.hide();
 	};
 
 
