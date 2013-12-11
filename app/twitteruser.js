@@ -113,9 +113,9 @@ TwitterUser.prototype.getUsersWhosTweetsAreRetweetedUsingTopic = function(topic,
 TwitterUser.prototype.getTimelineText = function(screen_name, callback){
 	var parameters = querystring.stringify({
 		screen_name: screen_name,
-		count: 200,
+		count: 100,
 		trim_user: true,
-		nclude_rts: false
+		include_rts: false
 	});
 
 	twitterOAuth.getProtectedResource('https://api.twitter.com/1.1/statuses/user_timeline.json?' + parameters, "GET", this.token, this.tokenSecret, function (err, data, res){
