@@ -161,7 +161,7 @@ TwitterUser.prototype.getUsersWhosTweetsAreRetweetedUsingTopic = function(topic,
 TwitterUser.prototype.getTimelineText = function(screen_name, callback){
 	var parameters = querystring.stringify({
 		screen_name: screen_name,
-		count: 100,
+		count: 50,
 		trim_user: true,
 		include_rts: false
 	});
