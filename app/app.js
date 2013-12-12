@@ -202,6 +202,10 @@ function searchTopic(user, topic, callback){
 				users[i].score += config.algorithm.tweetAboutTopicScore  * users[i].tweets.length;
 			};
 
+			users = _.sortBy(users, function (u){
+				return -u.score;
+			});
+
 			callback(null, users);
 		});
 	});

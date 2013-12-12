@@ -150,10 +150,6 @@ TwitterUser.prototype.getUsersWhosTweetsAreRetweetedUsingTopic = function(topic,
 			}
 		};
 
-		users = _.sortBy(users, function (user){
-			return -user.retweetedtweets.length; // user met meeste retweetedtweets (van ons topic)
-		});
-
 		callback(null, users);
 	});
 };
