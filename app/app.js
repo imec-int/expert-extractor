@@ -155,6 +155,7 @@ function searchTopic(user, topic, callback){
 	twitteruser.getUsersWhosTweetsAreRetweetedUsingTopic(topic, function (err, users){
 		if(err) return callback(err);
 
+
 		//return callback(null, users);
 
 		// searching experts for all their tweets about this topic:
@@ -192,6 +193,15 @@ function searchTopic(user, topic, callback){
 			});
 		}, function (err){
 			if(err) return callback(err);
+
+
+			// score berekenen:
+			for (var i = users.length - 1; i >= 0; i--) {
+				users[i].score = 0;
+				users[i].score += config.algorithm.retweetsForTopicScore * users[i].retweetedtweets.length;
+				users[i].score += config.algorithm.tweetAboutTopicScore  * users[i].tweets.length;
+			};
+
 			callback(null, users);
 		});
 	});

@@ -19,7 +19,8 @@ html
 					.panel-heading
 						h3.panel-title
 							a(href="https://twitter.com/${screen_name}", target="_blank") @${screen_name}
-							.badge.text-right    ${tweets.length}
+							| &nbsp;
+							.score.badge.text-right(title="score based on number of tweets and number of reteeted tweets") ${score}
 					.panel-body.center
 						.profileimage(style="background-image: url('${profile_image_url}')")
 						ul.list-group
