@@ -20,7 +20,7 @@ var App = function (options){
 		var topic = $("#topicfield").val();
 		console.log("searchbtn clicked and searching for " + topic);
 
-		clearTopic();
+		setTopic(topic);
 		clearExperts();
 		showSpinner();
 		$.get('/api/searchtopic', {topic: topic}, function (data){
@@ -37,7 +37,6 @@ var App = function (options){
 			// populate html:
 			hideSpinner();
 			clearExperts();
-			setTopic(topic);
 			for (var i = 0; i < experts.length; i++) {
 				addExpert( experts[i], topic );
 			};
@@ -45,7 +44,7 @@ var App = function (options){
 	};
 
 	var setTopic = function(topic){
-		topicEl.html(topic);
+		topicEl.html('"'+topic+'"');
 	};
 
 	var clearTopic = function(topic){
