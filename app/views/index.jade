@@ -18,7 +18,7 @@ html
 				.panel.panel-primary
 					.panel-heading
 						h3.panel-title
-							@${screen_name}
+							a(href="https://twitter.com/${screen_name}", target="_blank") @${screen_name}
 							.badge.text-right    ${tweets.length}
 					.panel-body.center
 						.profileimage(style="background-image: url('${profile_image_url}')")
