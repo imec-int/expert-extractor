@@ -2,6 +2,7 @@ var App = function (options){
 
 	var expertContainer = $("#topexpertlist>.row");
 	var spinnerEl = $(".spinner");
+	var topicEl = $("#topic");
 
 	var init = function (){
 
@@ -19,6 +20,7 @@ var App = function (options){
 		var topic = $("#topicfield").val();
 		console.log("searchbtn clicked and searching for " + topic);
 
+		clearTopic();
 		clearExperts();
 		showSpinner();
 		$.get('/api/searchtopic', {topic: topic}, function (data){
@@ -43,7 +45,11 @@ var App = function (options){
 	};
 
 	var setTopic = function(topic){
-		$("#topic").html(topic);
+		topicEl.html(topic);
+	};
+
+	var clearTopic = function(topic){
+		topicEl.html('');
 	};
 
 	var clearExperts = function(){
