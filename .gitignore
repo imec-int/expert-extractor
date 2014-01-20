@@ -18,3 +18,5 @@ node_modules
 !**/dist/**/*.css
 !**/expertextractor/**/*.css
 deploytools
+# we'll force the dummy file in once; then other users don't have to worry
+app/config.js
